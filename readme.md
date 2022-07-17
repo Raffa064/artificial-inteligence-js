@@ -19,4 +19,4 @@ I'm thinking to add more features for future versions like:
 
 ## Project page
 
-You can view the project page for view tests and showcases (unavailable for current versions...) [here](https://raffa064.github.io/artificial-inteligence-js)
+You can view the project page for view how to download, how to use, tests and showcases [here](https://raffa064.github.io/artificial-inteligence-js)
