@@ -16,3 +16,7 @@ NOTE: This module are written for reinforcement learn... Also I will not add any
 I'm thinking to add more features for future versions like:
 - More activation functions
 - Train enviroment structure
+
+## Project page
+
+You can view the project page for view tests and showcases (unavailable for current versions...) [here](https://raffa064.github.io/artificial-inteligence-js)
