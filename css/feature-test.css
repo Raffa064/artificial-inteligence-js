@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 10px;
+    background: #222;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div#logs {
+    max-height: 80vh;
+    padding: 10px;
+    overflow-y: scroll;
+    background: #333;
+    color: #aaa;
+    border-radius: 10px;
+}
+
+.log {
+    padding-left: 10px;
+    position: relative;
+}
+
+.log::before {
+    content: '';
+    width: 5px;
+    height: calc(100% - 2px);
+    position: absolute;
+    left: 0px;
+    top: 1px;
+}
+
+.log.debug::before {
+    background: #aaa;
+}
+
+.log.warning::before {
+    background: yellow;
+}
+
+.log.error::before {
+    background: red;
+}
+
+.log.sucess::before {
+    background: green;
+}
