@@ -3,7 +3,7 @@ import log from './logger.js'
 const randomGaussian = () => -1 + Math.random() * 2
 
 export default class NeuralNetwork {
-    static version = '1.0'
+    static version = '0.0.2'
     info
     hiddenLayers
     outputLayer
@@ -163,5 +163,21 @@ export class Neuron {
         var result = Math.tanh(u)
         log('PREDICT:<br>* input = '+JSON.stringify(input)+'<br>* weights = '+JSON.stringify(this.weights)+'<br>* bias = '+JSON.stringify(this.bias)+'<br>* u = '+u+'<br>* f(u) = '+result)
         return result
+    }
+}
+
+export class NetworTrainer {
+    createAgent
+    updateAgent
+    getFitnessOf
+    activeAgents = []
+    inactiveAgents = []
+
+    update() {
+        for (a in this.activeAgents) {
+            const agent = this.activeAgent[a]
+            this.updateAgent(agent)
+        }
+        
     }
 }

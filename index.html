@@ -11,45 +11,124 @@
 
 <body>
     <header>
-        <h1>Artificial Inteligence</h1>
-        <p id="module-version"></p>
+        <span>
+            <h1>Artificial Inteligence</h1>
+            <br>
+            <p id="module-version"></p>
+        </span> 
+        <span>
+            <label for="menu-checkbox">MENU</label>
+            <nav>
+                <ul>
+                   
+                </ul>
+            </nav>
+        </span>
     </header>
+    <input type="checkbox" name="menu-checkbox" id="menu-checkbox">
     <main>
+        <img id="isteregui" src="./img/network.png" alt="Neural network picture">
+        <a class="anchor" --title="About" name="about"></a>
+        <h2>About</h2>
+        <p>With artificial-inteligence.js module, you can get an simple way to use <span class="overlay-info" style="--overlay-text: 'Multiplayer perceptron';">MLPs</span> with javascript.</p>
+        <p>This module are implemented only for reinforcement learn, and I do not intend to implement supervised learning algorithms.</p>
+        <a class="anchor" --title="Tests" name="tests"></a>
         <h2>Tests</h2>
         <p>You can test current version by seen the execution logs <a href="./feature-test.html">here</a></p>
-        <p>With artificial-inteligence.js module, you can get an simple way to use artificial inteligence MLP.</p>
         <h2>The current features</h2>
         <p>The current version include:</p>
         <ul>
-            <li>Tanh activation function</li>
-            <li>Crossing over method (Simple weight and bias split)</li>
-            <li>Mutation method (Random mutation)</li>
+            <li>Tanh activation function;</li>
+            <li>Crossing over method (Simple weight and bias split);</li>
+            <li>Mutation method (Random mutation).</li>
         </ul>
         <p>NOTE: This module are written for reinforcement learn... Also I will not add any implementation of backpropagation.</p>
         <h2>Future features</h2>
         <p>I'm thinking to add more features for future versions like:</p>
         <ul>
-            <li>More activation functions</li>
-            <li>Train enviroment structure</li>
-            <li>Import/Export to JSON</li>
+            <li>More activation functions;</li>
+            <li>Train enviroment structure;</li>
+            <li>Import/Export to JSON.</li>
         </ul>
-        <h2>How to use</h2>
+        <a class="anchor" --title="Showcase" name="showcase"></a>
+        <h2>Showcase</h2>
+        <h2>How to install and use</h2>
+        <a class="anchor" --title="Download" name="download"></a>
         <h3>Download</h3>
-        <p>For use these module you can copy the code in the <a href="https://github.com/Raffa064/artificial-inteligence-js/blob/main/js/artificial-inteligence.js" target="_blank">github repository</a>, of intall module file by terminal:</p>
+        <p>For use this module you can copy the code in the <a href="https://github.com/Raffa064/artificial-inteligence-js/blob/main/js/artificial-inteligence.js" target="_blank">github repository</a>, or intall module file by terminal:</p>
         <h4>Linux and Windows</h4>
-        <p>You can use wget for download the module into current directory, if you dont have wget intalled install it with your prefered package manager like apt</p>
+        <div class="platform-banner" style="--image: url('../img/winnux.jpg');"></div>
+        <p>You can use wget for download the module into current directory, if you dont have wget intalled install it with your prefered package manager like apt:</p>
         <code>
             $ wget https://raffa064.github.io/artificial-inteligence-js/js/artificial-inteligence.js
         </code>
         <h4>Mac</h4>
-        <p>You can use curl for install with these command</p>
+        <div class="platform-banner" style="--image: url('../img/macos.jpg');"></div>
+        <p>You can use curl for download the module into current directory:</p>
         <code>
             $ curl https://raffa064.github.io/artificial-inteligence-js/js/artificial-inteligence.js
         </code>
+        <h4>Script tag on html</h4>
+        <div class="platform-banner" style="--image: url('../img/html.jpg');"></div>
+        <p>You can also add the module from script tag in your html:</p>
+        <code>
+            &lt;script src="https://raffa064.github.io/artificial-inteligence-js/js/artificial-inteligence.js"&gt;&lt;/script&gt;
+        </code>
+        <a class="anchor" --title="Get started" name="startGuide"></a>
+        <h3>How to instanciate an NeuralNetwork</h3>
+        <p>For instanciate your network manually you will need to import theNeuralNetwork class from artificial-inteligence.js module:</p>
+        <code>
+            //If you have added the module by script tag, it will not be necessary<br>
+            import NeuralNetwork from '&lt;YOUR COPY OF MODULE PATH&gt;'
+        </code>
+        <p>After, you will need to create an instance of the class, given for her these data:</p>
+        <ul>
+            <li>The number of inputs of the network;</li>
+            <li>The number of hidden layers;</li>
+            <li>The number of neurons per hidden layer;</li>
+            <li>The number of neurons in the output layer.</li>
+        </ul>
+        <p>The below code creates a network with 2 inpus, 2 hidden layers, 2 neurons per hidden layer and 1 output layer:</p>
+        <code>
+            ...<br>
+            const network = new NeuralNetwork(1, 2, 2, 1)<br>
+            ...
+        </code>
+        <a class="anchor" --title="Training" name="training"></a>
+        <h3>Training</h3>
     </main>
     <footer>
         <p>Follow me on github <a href="https://github.com/Raffa064" target="_blank">Raffa064</a></p>
     </footer>
+    <script>
+        //toggle menu visibility
+        const checkbox = document.querySelector("#menu-checkbox")
+        checkbox.onchange = () => {
+            toggleMenuState(checkbox.checked)
+        }
+        
+        function toggleMenuState(state) {
+            document.querySelector("header nav").classList.toggle("nav-open")
+            checkbox.checked = state
+        }
+       
+        //automatically add link anchors to menu
+        var menuItems = ''
+        document.querySelectorAll('.anchor').forEach((item) => {
+            menuItems += '<li><a onclick="toggleMenuState(false)" href="#'+item.getAttribute("name")+'">'+item.getAttribute('--title')+'</a>'
+        })
+        document.querySelector('header nav ul').innerHTML = menuItems
+        
+        var istereguiTouchCount = 0
+        const isteregui = document.querySelector('#isteregui')
+        isteregui.onclick = function () {
+            istereguiTouchCount++
+            if (istereguiTouchCount === 5) {
+                isteregui.classList.toggle('isteregui')
+                istereguiTouchCount = 0
+            }
+        }
+    </script>
     <script src="./js/index.js" type="module"></script>
 </body>
 

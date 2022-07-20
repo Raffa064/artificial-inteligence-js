@@ -1,27 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
+
+:root {
+    --header-height: 70px;
+    --footer-height: 40px;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*::-webkit-scrollbar {
+    display: none;
 }
 
 body {
+    min-height: 100vh;
     background: #222;
+    position: relative;
     color: #aaa;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-    height: 70px;
+    height: var(--header-height);
     padding: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid #333;
+    font-family: 'Dosis', Arial, Helvetica, sans-serif;
+}
+
+header h1, header p {
+    display: inline;
+}
+
+header nav {
+    width: 100vw;
+    height: 0vh;
+    overflow-y: hidden;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    background: #191919;  
+    z-index: 1;
+    transition: 0.5s;
+    opacity: 0%;
+}
+
+.nav-open {
+    height: calc(100vh - var(--header-height));
+    opacity: 100%;
+}
+
+header nav a {
+    display: block;
+    width: 100vw;
+    letter-spacing: -5px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px;
+    background: transparent;
+    color: #aaa;
+    transition: 0.5s;
+}
+
+.nav-open a {
+    letter-spacing: 0.1rem;
+}
+
+header nav a:hover {
+    background: #222;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + main {
+    display: none;
 }
 
 main {
+    width: 100vw;
     padding: 10px;
+    padding-bottom: calc(var(--footer-height) + 10px);
+}
+
+main > img {
+    width: calc(min(100vw, 100vh) / 3);
+    max-width: 300px;
+    display: block;
+    padding: 10px;
+    margin: auto;
+}
+
+.platform-banner {
+    width: calc(100vw - 20px);
+    height: calc(100vw / 3);
+    margin: 10px 0 10px 0;
+    background: var(--image);
+    background-position: center center;
+    background-size: cover;
 }
 
 main h2, main h3, main h4 {
@@ -32,6 +117,7 @@ main h2, main h3, main h4 {
 
 main p {
     text-indent: 0.3rem;
+    line-height: 1.6rem;;
 }
 
 main ul {
@@ -47,13 +133,33 @@ main li del {
     color: rgb(209, 99, 99);
 }
 
+.isteregui {
+    content: url(../img/the-first-isteregui.png);
+    animation: isteregui 2s infinite;
+}
+
+@keyframes isteregui {
+    0%, 50%, 100%{
+        transform: translateX(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-10px) rotate(-25deg);
+    }
+    75% {
+        transform: translateX(10px) rotate(25deg);
+    }
+}
+
 main code {
+    min-width: calc(100vw - 32px);
+    overflow: scroll;
+    white-space: nowrap;
     display: block;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #232323;
+    padding: 16px;
+    margin: 10px 0;
+    border-radius: 5px;
     background-color: #181818;
+    font-family: monospace;
     user-select: text;
 }
 
@@ -63,12 +169,14 @@ main code {
 
 .overlay-info:before {
     content: var(--overlay-text);
+    white-space: nowrap;
     padding: 10px;
     position: absolute;
     top: 100%;
     left: 0px;
     background: #222;
     color: #aaa;
+    font-size: 1rem;
     border-top: 1px solid #333;
     border-left: 1px solid #333;
     border-bottom: 1px solid #111;
@@ -83,21 +191,24 @@ main code {
     opacity: 100%;
 }
 
-a {
+main a, footer a{
     color: #ddd;
     text-decoration: underline;
     border: 1px dashed transparent;
     transition: 0.3s;
 }
 
-a:hover {
+main a:hover, footer a:hover {
     border-color: currentColor;
 }
 
 footer {
-    height: 40px;
+    width: 100vw;
+    height: var(--footer-height);
     padding: 10px;
     display: flex;
     align-items: center;
+    position: absolute;
+    bottom: 0;
     border-top: 1px solid #333;   
 }
